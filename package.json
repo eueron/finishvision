@@ -1,0 +1,19 @@
+{
+  "name": "finishvision",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FinishVision — AI-powered construction takeoff platform for finish carpentry",
+  "scripts": {
+    "dev:backend": "pnpm --filter @finishvision/backend dev",
+    "dev:frontend": "pnpm --filter @finishvision/frontend dev",
+    "dev": "pnpm run dev:backend & pnpm run dev:frontend",
+    "build:backend": "pnpm --filter @finishvision/backend build",
+    "build:frontend": "pnpm --filter @finishvision/frontend build",
+    "db:migrate": "pnpm --filter @finishvision/backend prisma:migrate",
+    "db:seed": "pnpm --filter @finishvision/backend prisma:seed",
+    "db:studio": "pnpm --filter @finishvision/backend prisma:studio"
+  },
+  "keywords": [],
+  "author": "FinishVision Team",
+  "license": "UNLICENSED"
+}
