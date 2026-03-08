@@ -4,7 +4,7 @@
     "builder": "nixpacks"
   },
   "deploy": {
-    "startCommand": "node apps/backend/dist/main.js",
+    "startCommand": "cd apps/backend && npx prisma migrate deploy && node dist/main",
     "restartPolicyMaxRetries": 5
   }
 }
