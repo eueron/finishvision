@@ -6,9 +6,8 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy monorepo files from parent directory
-COPY ../../../pnpm-workspace.yaml ../../../package.json ../../../pnpm-lock.yaml ./
-COPY . ./apps/backend
+# Copy all monorepo files
+COPY . .
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
@@ -30,7 +29,8 @@ COPY --from=builder /app/pnpm-workspace.yaml /app/package.json /app/pnpm-lock.ya
 COPY --from=builder /app/apps/backend ./apps/backend
 
 # Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
+WORKDIR /app
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts
 
 # Generate Prisma client
 WORKDIR /app/apps/backend
